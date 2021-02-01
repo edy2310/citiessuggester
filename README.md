@@ -25,7 +25,7 @@ $ java jar  name_of_build.jar.jar
 ```
 
 ### Rest API
-* A more detailed API documentation can be consulted at: [Swagger API documentation](http://localhost:8080/swagger-ui.html) 
+* A more detailed API documentation can be consulted at: /swagger-ui.html
 
 ##### Account Endpoints
 | URI | Method  | Description |
