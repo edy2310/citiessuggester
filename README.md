@@ -1,5 +1,6 @@
 # City Autocomplete API
-###Introduction
+
+### Introduction
 The purpose of this exercise is to provide an API returning a city autocomplete suggestions based on a received prefix.
 Giving as a result all possible cities, along with their respective state, country, latitude, longitude, and a score
 representing the probability the suggested city is correct.
