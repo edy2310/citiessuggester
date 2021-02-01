@@ -1,18 +1,18 @@
 # City Autocomplete API
 
-### Introduction
+## Introduction
 The purpose of this exercise is to provide an API returning a city autocomplete suggestions based on a received prefix.
 Giving as a result all possible cities, along with their respective state, country, latitude, longitude, and a score
 representing the probability the suggested city is correct.
 
-### Built using
+## Built using
 * [Java 11 (Correto 11)](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html) - Programming Language
 * [Spring Boot](https://spring.io/projects/spring-boot) - Web framework
 * [Maven](https://maven.apache.org) - Dependency management, task manager and scripting library
 * [Simple maps](https://simplemaps.com/data) - USA and Canada cities data provider
 
-### Getting Started
-##### This project doesn't use any third party service, nor does it make http requests to any other service. Therefore it is not necessary to have an internet connection to correctly run and use the project.
+## Getting Started
+### This project doesn't use any third party service, nor does it make http requests to any other service. Therefore it is not necessary to have an internet connection to correctly run and use the project.
 
 As a Spring boot project, it already has all the configurations needed to be a "Download and Run" project.
 It has a Tomcat embedded server, which makes this a simple bootable project.
@@ -24,14 +24,14 @@ This jar file is completely bootable from any JVM 11. To do so run:
 $ java jar  name_of_build.jar.jar
 ```
 
-### Rest API
+## Rest API
 * A more detailed API documentation can be consulted at: /swagger-ui.html
 
-##### Account Endpoints
+#### Account Endpoints
 | URI | Method  | Description |
 | ------------- | ------------- | ------------- |
 | /suggestions  | GET  | Get all possible cities
-##### Query string parameters
+#### Query string parameters
 | Parameter | Type | Description | Optional | Example |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | q  | String  | City prefix to search |  🚫 | Montre
@@ -39,14 +39,15 @@ $ java jar  name_of_build.jar.jar
 | longitude  | double  | Optional longitude for better search |  ✅ | -98.19
 | state  | String  | Optional state code for better search |  ✅ | QC
 | country  | String  | Optional country name for better search |  ✅ | Canada
-##### Sample requests URI examples
+#### Sample requests URI examples
 * /suggestions?q=Montre
 * /suggestions?q=Montre&state=QC
 * /suggestions?q=Montre&latitude=43.70011&longitude=-79.4163
 * /suggestions?q=Montre&latitude=43.70011&longitude=-79.4163&country=Canada&state=QC
 
-### How search works?
-##### Trie as main data structure
+
+## How search works?
+#### Trie as main data structure
 In order to perform the search effectively, a Trie data structure is used.
 A Trie is an n-ary tree where each of its nodes is commonly a character. When all the nodes finish creating a word,
 the last node is marked to know that a word has been found.
@@ -65,7 +66,7 @@ The `AutocompleteService` class is dedicated to searching, formatting and sortin
 Once a search is requested, all cities with same prefix, will be returned as an ArrayList of HashMaps, regardless of its score . Where each hashmap
 contains data from all cities with the same name.
 
-##### Project setup
+#### Project setup
 Original CSV with data of USA and Canadian cities were obtained from [Simple maps](https://simplemaps.com/data).
 These CSVs are in `/resources/data`
 
@@ -73,7 +74,8 @@ Once the project starts running, the `constructTrie` method in `CreateTrie` clas
 the project construction has finished.
 The purpose of this method is to take the name of each city and create a single Trie.
 
-### How is score calculated?
+
+## How is score calculated?
 The `ScoringService` class is dedicated to calculate the score of each result.
 
 5 parameters are consider to get the final score:
@@ -94,7 +96,7 @@ gives 20 points.
 Once al the possible points are calculated, they are divided by 100 and 2 decimal places of accuracy are left.
 
 
-### API keys design for future services
+## API keys design for future services
 
 When an http request is made to the server, it is first verified the key sent is an existing key within the database.
 If it is a valid key, a non-sql database record is stored for a limited time as a cache memory to speed up future requests.
