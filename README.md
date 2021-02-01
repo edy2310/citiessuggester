@@ -12,7 +12,7 @@ representing the probability the suggested city is correct.
 * [Simple maps](https://simplemaps.com/data) - USA and Canada cities data provider
 
 ## Getting Started
-### This project doesn't use any third party service, nor does it make http requests to any other service. Therefore it is not necessary to have an internet connection to correctly run and use the project.
+#### This project doesn't use any third party service, nor does it make http requests to any other service. Therefore it is not necessary to have an internet connection to correctly run and use the project.
 
 As a Spring boot project, it already has all the configurations needed to be a "Download and Run" project.
 It has a Tomcat embedded server, which makes this a simple bootable project.
