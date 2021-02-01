@@ -33,10 +33,9 @@ public class AutocompleteController {
         Optional<ArrayList<HashMap<String, Object>>> optionalResults = autocompleteService.getSuggestions(q,
                 latitude, longitude, state, country);
 
-        if(optionalResults.isEmpty())
-            return ResponseEntity.ok(resultHashMap);
+        if(!optionalResults.isEmpty())
+            resultHashMap.replace("suggestions", optionalResults.get());
 
-        resultHashMap.replace("suggestions", optionalResults.get());
         return ResponseEntity.ok(resultHashMap);
     }
 }
