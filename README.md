@@ -93,17 +93,17 @@ gives 20 points.
 * If both cities are in the same state/province, they will automatically receive 40 points as they are also in the same country.
 * The closer the difference between theirs names length, the more points near 20 it will receive.
 
-Once al the possible points are calculated, they are divided by 100 and 2 decimal places of accuracy are left.
+Once all the possible points are calculated, they are divided by 100 and 2 decimal places of accuracy are left.
 
 
 ## API keys design for future services
 
-When an http request is made to the server, it is first verified the key sent is an existing key within the database.
+When an http request is made to the server, a request to a new Authentication service is made. It verifies if the key sent is an existing key within the database.
 If it is a valid key, a non-sql database record is stored for a limited time as a cache memory to speed up future requests.
 
 If a valid key is returned, a request is made to the existing autocomplete service. The response from the autocomplete
 service is returned to the client.
 
-If the key is invalid, it is not cached and a response with status 401 is returned.
+If the key is invalid, it is not cached and a response with 401 status is returned.
 
 ![Alt text](src/main/resources/static/ApiKeysDesign.png "Design")
